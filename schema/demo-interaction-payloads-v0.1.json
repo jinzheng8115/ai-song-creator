@@ -1,0 +1,487 @@
+{
+  "version": "0.1",
+  "description": {
+    "en": "Demo interaction payloads for clickable AI music prompt skill flows.",
+    "zh": "AI 音乐 Prompt Skill 点击交互流程示例 payload。"
+  },
+  "examples": [
+    {
+      "id": "workplace_women_song",
+      "title": {
+        "en": "Workplace women song flow",
+        "zh": "职场女性歌曲流程"
+      },
+      "user_opening_message": "创作一首关于职场女性的歌曲",
+      "expected_mode": "create_vocal_song",
+      "steps": [
+        {
+          "step": 1,
+          "node_id": "track_type",
+          "ui_type": "single_select",
+          "prompt": {
+            "zh": "先选音乐类型",
+            "en": "Choose track type"
+          },
+          "options": [
+            {"id": "vocal_song", "label": "带歌词歌曲"},
+            {"id": "instrumental_bgm", "label": "纯器乐 / BGM"}
+          ],
+          "user_selection": "vocal_song",
+          "result": {
+            "zh": "用户选择：带歌词歌曲",
+            "en": "User selected: Vocal song with lyrics"
+          }
+        },
+        {
+          "step": 2,
+          "node_id": "use_case",
+          "ui_type": "single_select_with_other",
+          "prompt": {
+            "zh": "这首歌主要用在什么场景？",
+            "en": "Where will this song be used?"
+          },
+          "options": [
+            "自媒体内容配歌",
+            "短视频剧情配歌",
+            "个人表达 / 朋友圈分享",
+            "品牌广告 / 活动主题歌",
+            "纪录片 / 采访配歌",
+            "其他"
+          ],
+          "user_selection": "自媒体内容配歌",
+          "result": {
+            "zh": "系统记录 use_case = self_media",
+            "en": "System records use_case = self_media"
+          }
+        },
+        {
+          "step": 3,
+          "node_id": "style_path",
+          "ui_type": "single_select",
+          "prompt": {
+            "zh": "风格怎么定？",
+            "en": "How should style be chosen?"
+          },
+          "options": [
+            "直接选风格",
+            "不确定，帮我推荐",
+            "用参考歌 / 歌手分析风格"
+          ],
+          "user_selection": "不确定，帮我推荐",
+          "result": {
+            "zh": "进入系统推荐风格路径",
+            "en": "Enter guided style recommendation path"
+          }
+        },
+        {
+          "step": 4,
+          "node_id": "style_recommendation",
+          "ui_type": "generated_recommendations",
+          "generation_basis": [
+            "theme = 职场女性",
+            "use_case = 自媒体内容配歌",
+            "track_type = vocal_song"
+          ],
+          "recommended_options": [
+            {
+              "id": "urban_pop_narrative",
+              "label": {
+                "zh": "都市叙事流行：更适合表达职场压力、独立与自我拉扯",
+                "en": "Urban narrative pop: good for pressure, independence, and inner conflict"
+              }
+            },
+            {
+              "id": "rnb_urban_feminine",
+              "label": {
+                "zh": "都市感 R&B / pop：更现代、更有女性自我意识",
+                "en": "Urban R&B / pop: more modern and self-aware"
+              }
+            },
+            {
+              "id": "cinematic_growth_ballad",
+              "label": {
+                "zh": "电影感成长抒情：更高级、更适合人物故事型内容",
+                "en": "Cinematic growth ballad: more elevated and story-driven"
+              }
+            }
+          ],
+          "user_selection": "urban_pop_narrative",
+          "result": {
+            "zh": "系统记录 style = 都市叙事流行",
+            "en": "System records style = urban narrative pop"
+          }
+        },
+        {
+          "step": 5,
+          "node_id": "mood",
+          "ui_type": "single_select_with_other",
+          "prompt": {
+            "zh": "想要什么情绪方向？",
+            "en": "What mood direction do you want?"
+          },
+          "options": [
+            "温暖治愈",
+            "孤独克制",
+            "现实苦涩",
+            "坚定向前",
+            "高级感 / 电影感",
+            "其他"
+          ],
+          "user_selection": "坚定向前",
+          "result": {
+            "zh": "系统记录 mood = steady_forward",
+            "en": "System records mood = steady_forward"
+          }
+        },
+        {
+          "step": 6,
+          "node_id": "vocal_preference",
+          "ui_type": "single_select",
+          "prompt": {
+            "zh": "人声方向",
+            "en": "Vocal preference"
+          },
+          "options": [
+            "男声主唱",
+            "女声主唱",
+            "男女对唱",
+            "合唱感更强",
+            "不确定，帮我推荐"
+          ],
+          "user_selection": "女声主唱",
+          "result": {
+            "zh": "系统记录 vocal = female_lead",
+            "en": "System records vocal = female_lead"
+          }
+        },
+        {
+          "step": 7,
+          "node_id": "lyric_language",
+          "ui_type": "single_select",
+          "prompt": {
+            "zh": "歌词语言",
+            "en": "Lyric language"
+          },
+          "options": [
+            "中文",
+            "英文",
+            "中英混合"
+          ],
+          "user_selection": "中文",
+          "result": {
+            "zh": "系统记录 lyrics = Chinese",
+            "en": "System records lyrics = Chinese"
+          }
+        },
+        {
+          "step": 8,
+          "node_id": "output_format",
+          "ui_type": "single_select",
+          "prompt": {
+            "zh": "输出形式",
+            "en": "Output format"
+          },
+          "options": [
+            "简洁版 Prompt",
+            "完整 Prompt 包",
+            "歌词 + Style Prompt",
+            "多个版本方向"
+          ],
+          "user_selection": "完整 Prompt 包",
+          "result": {
+            "zh": "系统记录 output = complete_package",
+            "en": "System records output = complete_package"
+          }
+        },
+        {
+          "step": 9,
+          "node_id": "requirement_summary",
+          "ui_type": "generated_recommendations",
+          "summary": {
+            "zh": [
+              "类型：带歌词歌曲",
+              "场景：自媒体内容配歌",
+              "风格：都市叙事流行",
+              "情绪：坚定向前",
+              "人声：女声主唱",
+              "歌词语言：中文",
+              "输出：完整 Prompt 包"
+            ],
+            "en": [
+              "Track type: Vocal song",
+              "Use case: Self-media storytelling",
+              "Style: Urban narrative pop",
+              "Mood: Steady and forward-looking",
+              "Vocal: Female lead",
+              "Lyrics: Chinese",
+              "Output: Complete package"
+            ]
+          }
+        },
+        {
+          "step": 10,
+          "node_id": "final_output",
+          "ui_type": "generated_recommendations",
+          "expected_blocks": [
+            "Requirement Summary",
+            "Music Direction",
+            "Recommended Title Options",
+            "Style Prompt",
+            "Structure & Arrangement Notes",
+            "Lyrics",
+            "Iteration Prompts",
+            "Usage Notes"
+          ]
+        },
+        {
+          "step": 11,
+          "node_id": "title_selection_follow_up",
+          "ui_type": "single_select",
+          "prompt": {
+            "zh": "选择一个推荐歌名，继续细化",
+            "en": "Choose a recommended title to refine further"
+          },
+          "example_title_options": [
+            "她还在往前走",
+            "写字楼的灯",
+            "不肯退的人",
+            "把自己撑住"
+          ],
+          "user_selection": "她还在往前走"
+        },
+        {
+          "step": 12,
+          "node_id": "iteration_follow_up",
+          "ui_type": "single_select",
+          "options": [
+            "调整副歌更抓耳",
+            "改得更电影感",
+            "改得更真实克制",
+            "围绕某个歌名继续细化"
+          ],
+          "user_selection": "改得更真实克制"
+        }
+      ]
+    },
+    {
+      "id": "world_cup_theme_song",
+      "title": {
+        "en": "World Cup theme song flow",
+        "zh": "世界杯主题歌流程"
+      },
+      "user_opening_message": "我想创作一首歌曲，用来迎接即将到来的 2026 美加墨世界杯。我比较喜欢 1990 年世界杯那种宏大抒情的大赛主题曲气质。",
+      "expected_mode": "create_vocal_song",
+      "steps": [
+        {
+          "step": 1,
+          "node_id": "track_type",
+          "ui_type": "single_select",
+          "skipped_reason": {
+            "zh": "用户首句已经明确是歌曲",
+            "en": "User already made it clear this is a song"
+          }
+        },
+        {
+          "step": 2,
+          "node_id": "use_case",
+          "ui_type": "single_select_with_other",
+          "prompt": {
+            "zh": "使用场景",
+            "en": "Use case"
+          },
+          "options": [
+            "体育主题 / 助威歌曲",
+            "品牌广告 / 活动主题歌",
+            "其他"
+          ],
+          "user_selection": "体育主题 / 助威歌曲",
+          "result": {
+            "zh": "系统记录 use_case = sports_theme",
+            "en": "System records use_case = sports_theme"
+          }
+        },
+        {
+          "step": 3,
+          "node_id": "style_path",
+          "ui_type": "single_select",
+          "prompt": {
+            "zh": "风格怎么定？",
+            "en": "How should style be chosen?"
+          },
+          "options": [
+            "直接选风格",
+            "不确定，帮我推荐",
+            "用参考歌 / 歌手分析风格"
+          ],
+          "user_selection": "用参考歌 / 歌手分析风格"
+        },
+        {
+          "step": 4,
+          "node_id": "style_reference",
+          "ui_type": "text_input",
+          "prompt": {
+            "zh": "请给我一个你喜欢的参考方向，我会分析成安全风格特征",
+            "en": "Give me a reference direction and I will analyze it into safe style traits"
+          },
+          "user_input": "1990 年世界杯那种宏大、抒情、世界感、荣耀感的大赛主题曲气质",
+          "analysis_output": [
+            {
+              "id": "cinematic_adult_contemporary_anthem",
+              "label": {
+                "zh": "电影感成人抒情 anthem：宏大、抒情、国际赛事主题曲气质",
+                "en": "Cinematic adult-contemporary anthem: grand, lyrical, tournament-theme feeling"
+              }
+            },
+            {
+              "id": "stadium_ballad_orchestral_pop",
+              "label": {
+                "zh": "体育场抒情流行：更强调万人合唱和荣耀感",
+                "en": "Stadium ballad / orchestral pop: stronger crowd and glory feeling"
+              }
+            },
+            {
+              "id": "global_football_theme_song",
+              "label": {
+                "zh": "国际足球主题歌：更强调世界共同体感",
+                "en": "Global football theme song: stronger sense of international unity"
+              }
+            }
+          ],
+          "safety_note": {
+            "zh": "系统只提取抽象特征，不直接模仿具体作品或歌手。",
+            "en": "The system extracts abstract traits and does not directly imitate a real song or singer."
+          },
+          "user_selection": "cinematic_adult_contemporary_anthem"
+        },
+        {
+          "step": 5,
+          "node_id": "mood",
+          "ui_type": "single_select_with_other",
+          "prompt": {
+            "zh": "情绪方向",
+            "en": "Mood direction"
+          },
+          "options": [
+            "热血高燃",
+            "高级感 / 电影感",
+            "坚定向前",
+            "其他"
+          ],
+          "user_selection": "高级感 / 电影感"
+        },
+        {
+          "step": 6,
+          "node_id": "vocal_preference",
+          "ui_type": "single_select",
+          "prompt": {
+            "zh": "人声方向",
+            "en": "Vocal preference"
+          },
+          "options": [
+            "男声主唱",
+            "女声主唱",
+            "男女对唱",
+            "合唱感更强",
+            "不确定，帮我推荐"
+          ],
+          "user_selection": "男声主唱"
+        },
+        {
+          "step": 7,
+          "node_id": "lyric_language",
+          "ui_type": "single_select",
+          "prompt": {
+            "zh": "歌词语言",
+            "en": "Lyric language"
+          },
+          "options": [
+            "中文",
+            "英文",
+            "中英混合"
+          ],
+          "user_selection": "中文"
+        },
+        {
+          "step": 8,
+          "node_id": "output_format",
+          "ui_type": "single_select",
+          "prompt": {
+            "zh": "输出形式",
+            "en": "Output format"
+          },
+          "options": [
+            "简洁版 Prompt",
+            "完整 Prompt 包",
+            "歌词 + Style Prompt",
+            "多个版本方向"
+          ],
+          "user_selection": "完整 Prompt 包"
+        },
+        {
+          "step": 9,
+          "node_id": "requirement_summary",
+          "ui_type": "generated_recommendations",
+          "summary": {
+            "zh": [
+              "类型：带歌词歌曲",
+              "场景：世界杯主题歌",
+              "风格：电影感成人抒情 anthem",
+              "情绪：高级感 / 电影感",
+              "人声：男声主唱",
+              "歌词语言：中文",
+              "输出：完整 Prompt 包"
+            ],
+            "en": [
+              "Track type: Vocal song",
+              "Use case: World Cup theme song",
+              "Style: Cinematic adult-contemporary anthem",
+              "Mood: Premium / cinematic",
+              "Vocal: Male lead",
+              "Lyrics: Chinese",
+              "Output: Complete package"
+            ]
+          }
+        },
+        {
+          "step": 10,
+          "node_id": "final_output",
+          "ui_type": "generated_recommendations",
+          "expected_blocks": [
+            "Requirement Summary",
+            "Music Direction",
+            "Recommended Title Options",
+            "Style Prompt",
+            "Structure & Arrangement Notes",
+            "Lyrics",
+            "Iteration Prompts",
+            "Usage Notes"
+          ]
+        },
+        {
+          "step": 11,
+          "node_id": "title_selection_follow_up",
+          "ui_type": "single_select",
+          "example_title_options": [
+            "为荣耀而来",
+            "世界同心",
+            "向光的方向",
+            "把梦想唱向世界"
+          ],
+          "user_selection": "为荣耀而来"
+        },
+        {
+          "step": 12,
+          "node_id": "iteration_follow_up",
+          "ui_type": "single_select",
+          "options": [
+            "调整副歌更抓耳",
+            "改得更电影感",
+            "改得更像万人合唱版",
+            "围绕某个歌名继续细化"
+          ],
+          "user_selection": "改得更像万人合唱版"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "skill_name": "interactive-ai-music-prompt-skill",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我想做一首中文流行抒情歌，主题是 30 岁以后还在努力生活，适合发朋友圈，温暖但有点伤感，男声，输出完整 Prompt 包。",
+      "expected_output": "Should route to create_vocal_song, ask few or zero follow-up questions, produce a complete vocal-song package with Chinese lyrics, English prompt modules, a mature emotional male vocal direction, medium-slow BPM range, title options, sectioned Lyrics Box, and copy-ready iteration prompts.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "帮我做一段科技产品宣传片背景音乐，不要人声，要高级、未来感、干净一点，适合旁白。",
+      "expected_output": "Should route to create_instrumental_bgm, preserve instrumental-only constraints, infer or ask about loopability only if needed, produce an English instrumental prompt and structure box, keep room for voiceover, and avoid vocal-related output blocks.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "这是我现在的 Suno prompt: sad pop song, male vocal, piano, emotional. 帮我优化得更电影感、更高级一点，适合短视频。",
+      "expected_output": "Should route to optimize_existing_prompt, diagnose weakness in specificity, convert vague mood into more actionable musical direction, return an improved English prompt, explain why it is stronger, and provide a few next-iteration prompts.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "我有一段中文歌词，但是副歌不够抓耳，也不太像能唱出来的歌，帮我优化一下，风格偏民谣流行。",
+      "expected_output": "Should route to optimize_existing_lyrics, ask for the lyric draft if not provided, focus on hook strength and singability, keep lyrics in Chinese by default, suggest a matching folk-pop style direction in English prompt language, and provide iteration prompts.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "我想做一个适合小红书短视频的 30 秒音乐 Hook，最好前几秒就有记忆点，给我 3 个不同方向。",
+      "expected_output": "Should route to generate_short_video_hook or generate_multi_versions depending on interpretation, but must produce three clearly separated short-video-friendly hook directions, emphasize first-impression impact, keep prompt modules in English, and include hook-specific iteration prompts.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "帮我做一首品牌主题歌，给一个新消费咖啡品牌用，想要年轻、有记忆点、能活动现场一起唱，中文，输出完整 Prompt 包。",
+      "expected_output": "Should route to create_vocal_song, treat this as a brand-theme-song case instead of generic pop song generation, ask at most one or two targeted questions if needed, produce Chinese lyrics with English prompt modules, emphasize brand memorability, group-sing potential, and chorus hook design.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "我想做一首有世界杯氛围的体育 anthem，要热血、万人合唱感、鼓点强一点。",
+      "expected_output": "Should route to create_vocal_song, infer sports anthem structure and high-energy crowd-sing direction, produce strong chorus and chant-oriented arrangement, and avoid making it sound like a generic rock song without stadium scale.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "帮我写一首中英混合的歌曲，主题是毕业和离开校园，想要温暖、怀旧、最后有一点希望感。",
+      "expected_output": "Should route to create_vocal_song, ask minimal follow-up questions if needed, keep lyrics bilingual because the user explicitly requested it, keep prompt modules in English, and shape the emotional arc from nostalgia toward hopeful release.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "我想给婚礼做一首歌，女声，温柔一点，不要太俗，适合现场播放，也适合发短视频。",
+      "expected_output": "Should route to create_vocal_song, balance wedding intimacy with short-video usability, keep questioning concise, produce a gentle but memorable chorus direction, and avoid clichéd over-the-top wedding-ballad language.",
+      "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "帮我做一首像周杰伦那样唱、旋律也像《晴天》那种感觉的歌。",
+      "expected_output": "Should not comply with direct artist or song imitation. It should refuse the exact imitation framing, then redirect into an abstract alternative such as nostalgic Mandopop, warm youthful male vocal, melodic pop-ballad phrasing, and era/style-based description without copying the named artist or song.",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Interactive AI Music Prompt Skill"
+  short_description: "Create and refine structured AI music prompt packages"
+  default_prompt: "Use $interactive-ai-music-prompt-skill to help me create or refine a music prompt with guided structured interaction."
