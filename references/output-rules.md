@@ -82,6 +82,163 @@ For lyric-based songs, keep these as separate blocks:
 Do not merge lyrics into structure notes.
 不要把歌词和结构说明混成一个框。
 
+## Lyrics language boundary / 歌词模块语言边界
+
+Inside the `Lyrics` block, allow the lyric body itself to follow the user-requested language.
+在 `Lyrics` 模块内部，歌词正文可以跟随用户要求的语言。
+
+However, all non-lyric control content inside the same block must remain English-only.
+但是，同一模块中的所有非歌词控制内容都必须保持全英文。
+
+This includes:
+这包括：
+
+- section labels / 段落标签
+- role labels / 角色标签
+- arrangement cues / 编曲提示
+- vocal delivery notes / 演唱说明
+- transition notes / 过渡说明
+
+Good example:
+推荐示例：
+
+```text
+[Verse 1]
+[acoustic guitar, close vocal]
+风吹过操场的傍晚
+我们还站在光里面
+```
+
+Bad example:
+不推荐示例：
+
+```text
+[主歌 1]
+[木吉他, 贴近人声]
+风吹过操场的傍晚
+我们还站在光里面
+```
+
+If the lyrics are bilingual, multilingual, or non-English, this rule still holds.
+即使歌词本身是双语、多语或非英文，这条规则仍然成立。
+
+## Arrangement line format inside `Lyrics` / `Lyrics` 内的编曲行格式
+
+For vocal songs, prefer splitting the section tag and the arrangement cue into two separate bracketed lines.
+对于带歌词歌曲，默认优先把段落标签与编曲提示拆成两行独立方括号内容。
+
+Preferred format:
+推荐格式：
+
+```text
+[Verse 1]
+[Soft piano carries the harmony while muted guitar adds a gentle pulse, with very light percussion under a close vocal]
+```
+
+This is usually better than compressing everything into one tag.
+这通常比把所有内容压进一个标签里更清楚。
+
+Avoid this as the default style:
+默认不要优先使用这种写法：
+
+```text
+[Verse 1 - soft piano, muted guitar pulse, close vocal, very light percussion]
+```
+
+Use the combined one-line format only when the output must stay extremely compact.
+只有在必须极度压缩输出时，才使用合并成一行的格式。
+
+Both lines must remain English-only unless the user explicitly asks for Chinese prompt payload.
+除非用户明确要求中文 prompt 载荷，否则这两行都必须保持全英文。
+
+## Richer arrangement cues inside `Lyrics` / `Lyrics` 内的更丰富编曲提示
+
+For vocal songs, the arrangement cues inside section tags should usually be more informative than a single instrument label.
+对于带歌词歌曲，段落后的编曲提示通常应比“单一乐器标签”更丰富。
+
+The arrangement cue should usually read like a natural short English sentence or sentence fragment, not like a pile of disconnected keywords.
+编曲提示通常应写成自然的、短的英文句子或句式片段，而不是一堆割裂关键词的堆砌。
+
+Weak example:
+较弱示例：
+
+```text
+[Verse 1]
+[piano]
+```
+
+Better example:
+更好示例：
+
+```text
+[Verse 1]
+[Soft piano carries the harmony while muted guitar adds a gentle pulse, with very light percussion under a close vocal]
+```
+
+Preferred sentence feel:
+推荐句感：
+
+- sounds like an actual arrangement instruction / 听起来像真实编曲指令
+- has internal flow and coherence / 内部有连贯性
+- can mention movement or change, not just static ingredients / 可以描述推进和变化，而不只是静态元素
+
+Good examples:
+推荐示例：
+
+```text
+[Acoustic guitar gets groovier, and soft syncopated drums start to enter]
+[The bassline kicks in and builds a smoother groove, with light vocal ad-libs around the phrasing]
+[The music drops down to a light, bouncy acoustic rhythm with a casual head-nodding beat]
+```
+
+Less preferred examples:
+不推荐示例：
+
+```text
+[acoustic guitar, syncopated drums, groove]
+[bassline, vocal ad-libs, smoother groove]
+[light acoustic rhythm, bouncy beat]
+```
+
+Preferred arrangement-cue density:
+推荐的编曲提示密度：
+
+- 2-4 concrete arrangement cues per major section / 主要段落尽量给 2-4 个具体编曲信息
+- enough information to guide texture and movement / 信息量足以指导质感和推进
+- not so much that the tag becomes bloated or unreadable / 但不要膨胀到难读
+
+Good cue dimensions include:
+推荐包含的维度：
+
+- instrumentation layers / 乐器层次
+- rhythm behavior / 节奏状态
+- vocal placement / 人声位置或唱法
+- energy movement / 能量变化
+- harmony or pad support / 和声或铺底支持
+- width or density change / 声场或密度变化
+
+Examples:
+示例：
+
+```text
+[Verse 1]
+[Soft piano carries the harmony while muted guitar adds a gentle pulse, with very light percussion under a close vocal]
+[Pre-Chorus]
+[The bassline enters softly as the drums lift a little, and the harmony begins to rise around tighter phrasing]
+[Chorus]
+[Full drums open up with warm bass and broader guitar support, while backing vocals widen the hook]
+[Bridge]
+[The drums pull back, piano moves to the front, and suspended chords create a more intimate space]
+[Final Chorus]
+[Bigger drums and brighter strings push the section higher, with wider choir support for the strongest lift]
+```
+
+Do not turn every section tag into a full paragraph.
+不要把每个段落标签写成整段说明。
+
+Aim for compact richness rather than verbosity.
+目标是“紧凑但更丰富”，而不是冗长。
+
 ## Lyrics structure consistency / 歌词结构一致性
 
 The lyric structure should follow the chosen song structure rather than being mechanically fixed in advance.
@@ -243,3 +400,178 @@ Typical output:
 3. Hook Lyric or Vocal Idea if relevant / 如适用，Hook 歌词或人声想法
 4. Edit Cue Notes / 剪辑提示
 5. Variant Options / 变体选项
+
+## Gold examples / 标准样例
+
+These are compact reference shapes for stable output formatting.
+以下是用于稳定输出格式的紧凑参考形态。
+
+Do not copy them mechanically. Use them to keep block structure consistent.
+不要机械照抄它们；应把它们用作保持输出块结构一致的参考。
+
+### `create_vocal_song` example
+
+```text
+Requirement Summary
+- A Chinese graduation song for short-video and social sharing
+
+Music Direction
+- Warm nostalgic pop with a hopeful late lift
+
+Recommended Title Options
+- After the Bell
+- The Last Summer Uniform
+- See You in Brighter Days
+
+Style Prompt
+Genre: Chinese pop, youth nostalgia pop
+Mood: warm, reflective, hopeful
+Vocal: mixed group vocal, emotionally sincere
+Tempo: mid tempo
+Texture: piano, light guitar, gradual band lift
+Energy: gentle opening, widening chorus, bright finish
+Hook: memorable sing-along chorus
+Use Case: graduation sharing, class memory montage
+
+Lyrics
+[Verse 1]
+[Soft piano leads the harmony while light guitar support keeps the rhythm restrained under a close vocal]
+...
+
+[Chorus]
+[Fuller drums and warm bass open the section up, while wider harmony gives the chorus an uplifting lift]
+...
+
+Iteration Prompts
+- Make the chorus more anthemic and easier to sing together
+
+Usage Notes
+- Suitable for class memory videos and graduation recap edits
+```
+
+### `create_instrumental_bgm` example
+
+```text
+Requirement Summary
+- A healing instrumental track for pre-sleep relaxation
+
+Music Direction
+- Soft ambient piano with slow emotional release
+
+Style Prompt
+Genre: ambient piano, healing new-age instrumental
+Mood: calm, weightless, restorative
+Texture: soft piano, warm pad, light air noise
+Rhythm: free-flowing, low-percussion or no-percussion
+Energy: low and stable, slow bloom, gentle fade
+Development: subtle motif repetition with small variations
+Use Case: sleep, breathing reset, quiet night routine
+Duration: 60-90 seconds, loop-friendly
+
+Instrumental Structure Box
+[Intro - sparse piano, wide air]
+[Main Theme - soft repeating motif, warm pad support]
+[Variation - slightly fuller harmony, still restrained]
+[Release - thinner texture, slower decay]
+[Loop Out - clean tail for seamless repeat]
+
+Iteration Prompts
+- Make it even softer and more bedtime-friendly
+
+Usage Notes
+- Works well under low-volume narration or sleep content intros
+```
+
+### `optimize_existing_prompt` example
+
+```text
+Problem Diagnosis
+- The original prompt is too generic in genre and emotional movement
+
+Optimized Prompt
+Genre: rock, anthemic pop rock
+Mood: determined, expansive, idealistic
+Vocal: strong male lead with open-throat chorus delivery
+Tempo: mid-up
+Texture: electric guitar, live drums, bass drive, crowd-lift chorus
+Energy: steady build, large chorus release, confident finish
+Hook: direct, chant-ready chorus
+Use Case: motivational song, collective uplift, sports montage
+
+Why This Version Works Better
+- The genre, hook behavior, and chorus scale are now much clearer
+
+Optional Variants
+- A more melodic version
+- A rougher live-band version
+```
+
+### `optimize_existing_lyrics` example
+
+```text
+Lyric Diagnosis
+- The chorus idea is clear, but the key line is not memorable enough
+
+Revised Lyrics
+[Verse 1]
+[A close vocal stays in front while sparse chords and minimal rhythm keep the space intimate]
+...
+
+[Chorus]
+[The section lifts more strongly with fuller backing, wider vowel shapes, and clearer downbeat support]
+...
+
+Hook and Structure Notes
+- The chorus line now lands earlier and repeats more cleanly
+
+Optional Next-step Variants
+- A more poetic chorus version
+- A more direct and shareable chorus version
+```
+
+### `generate_multi_versions` example
+
+```text
+Shared Requirement Summary
+- A city-themed song about Shanghai with stronger street-life detail
+
+Version A
+- Urban narrative rap with dialogue energy
+
+Version B
+- Night-drive pop with cinematic loneliness
+
+Version C
+- City-folk storytelling with drifting warmth
+
+Comparison Advice
+- Choose A for sharper imagery and spreadability
+- Choose B for atmosphere and visual montage
+- Choose C for emotional intimacy
+```
+
+### `generate_short_video_hook` example
+
+```text
+Hook Direction
+- A fast emotional hook for first-impression impact
+
+Short Style Prompt
+Genre: pop, short-form emotional hook pop
+Mood: immediate, bright, slightly aching
+Vocal: youthful lead with clean top-line emphasis
+Tempo: mid-up
+Hook: first-line catch, short repeat payoff
+
+Hook Lyric or Vocal Idea
+[Hook]
+[The hook should enter instantly with no long intro, landing on the beat from the first phrase]
+...
+
+Edit Cue Notes
+- Best if the first vocal phrase lands in the opening second
+
+Variant Options
+- More anthemic
+- More intimate
+```

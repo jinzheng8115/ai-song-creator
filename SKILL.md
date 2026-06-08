@@ -759,3 +759,30 @@ Before finalizing, quickly check:
 7. Are prompt modules in English by default? / Prompt 模块是否默认英文？
 8. Does lyric language follow the user request? / 歌词语言是否跟随用户要求？
 9. Did you avoid direct artist imitation? / 是否避免了真实歌手直接模仿？
+
+## Final output validation / 最终输出校验
+
+Before sending the final answer, run one last strict validation pass.
+在发送最终答案前，再做一次严格校验。
+
+This validation is not optional when the task produces a prompt package.
+只要任务产出的是 Prompt 包，这一步就不是可选项。
+
+Check these items explicitly:
+显式检查以下项目：
+
+1. `create_vocal_song` must include title recommendations / `create_vocal_song` 必须包含推荐歌名
+2. `create_vocal_song` must include a separate `Lyrics` block / `create_vocal_song` 必须包含独立 `Lyrics` 模块
+3. `create_instrumental_bgm` must include a separate `Instrumental Structure Box` / `create_instrumental_bgm` 必须包含独立 `Instrumental Structure Box`
+4. `Style Prompt` must be English-only inside the prompt block / `Style Prompt` 在 prompt 块内部必须全英文
+5. inside the `Lyrics` block, only lyric lines may follow the user-requested language; section labels, role labels, and control notes must stay in English / `Lyrics` 模块内部，只有歌词正文可跟随用户要求的语言；段落标签、角色标签、控制说明必须保持英文
+6. prefer the two-line lyrics control format when arrangement detail is present: one bracketed line for the section tag, one bracketed line for the arrangement cue / 只要存在编曲细节，优先使用两行式歌词控制格式：一行段落标签，一行编曲提示
+7. arrangement cue lines inside `Lyrics` should usually read like natural English arrangement instructions, not like disconnected keyword piles / `Lyrics` 内的编曲提示行通常应写成自然的英文编曲描述，而不是割裂关键词堆砌
+8. do not output Chinese inside prompt payload blocks unless the user explicitly asks for Chinese prompt payload / 除非用户明确要求中文 prompt 载荷，否则不要在 prompt 载荷块中输出中文
+9. if the theme is broad, ensure the expression angle was clarified or safely inferred / 如果主题宽泛，确认表达角度已澄清或被安全推断
+10. `Genre` should be specific enough to avoid vague generic labels when more useful sub-style detail is available / 如果可以更具体，不要把 `Genre` 写成过泛标签
+11. recommended song titles should read like real track names, not slogans or lyric fragments / 推荐歌名应像真实曲名，而不是口号或歌词摘句
+12. final output should match the active mode and should not leak blocks from another mode / 最终输出必须匹配当前 mode，不要混入其他 mode 的模块
+
+If any item fails, fix the output before sending it.
+如果任何一项不满足，先修正输出，再发送结果。
