@@ -319,6 +319,71 @@ This is better than either:
 For the normal default delivery format, `Structure & Arrangement Notes` may be omitted as a separate block because its information can already be covered by `Style Prompt` plus `Lyrics` or `Instrumental Structure Box`.
 对于默认交付格式，`Structure & Arrangement Notes` 可以省略独立输出，因为它的信息已经可由 `Style Prompt` 加 `Lyrics` 或 `Instrumental Structure Box` 覆盖。
 
+## Style Prompt field quality / Style Prompt 字段质量
+
+Do not add a separate `Style Capsule` field by default.
+默认不要额外增加 `Style Capsule` 字段。
+
+Instead, make the existing structured fields more precise and less repetitive.
+应提高现有结构化字段的精准度，并减少字段之间的重复。
+
+Each field should have a distinct job:
+每个字段应承担不同功能：
+
+- `Genre`: broad genre plus useful sub-style layers / 泛风格加有用的细分风格层
+- `Mood`: emotional color and psychological tone / 情绪色彩与心理气质
+- `Vocal`: singer identity, delivery, microphone intimacy, phrasing / 人声身份、唱法、贴耳程度、咬字与句法
+- `Groove`: beat feel, rhythmic movement, bass pulse, swing or syncopation / 节拍感觉、律动方式、低频脉冲、摇摆或切分
+- `Tempo`: speed or BPM only when useful / 仅在有用时表达速度或 BPM
+- `Texture`: instruments, production surface, analog/digital color, room feel / 乐器、制作表面、模拟或数字质感、空间感
+- `Energy`: section-level build and release behavior / 段落能量推进与释放
+- `Atmosphere`: scene-world and visual ambience when the theme has a strong setting / 当主题有强场景时，表达场景世界与视觉氛围
+- `Use Case`: where or how the track will be used / 歌曲或音乐的使用方式
+
+Avoid repeating the same idea across multiple fields.
+避免在多个字段中重复同一个意思。
+
+Weak example:
+较弱示例：
+
+```text
+Genre: Chinese R&B, urban night city pop
+Mood: seductive, intimate, late-night
+Vocal: smooth female lead
+Tempo: mid-slow groove
+Texture: electric piano, bass, drums
+```
+
+Better example:
+更好示例：
+
+```text
+Genre: trip-hop, smoky lounge jazz, late-night downtempo pop
+Mood: sultry, moody, intimate, cinematic
+Vocal: sultry breathy female vocals, close-mic delivery, cool restrained phrasing
+Groove: slow sensual downtempo beat with hypnotic deep bass movement
+Texture: warm analog synth, smoky electric piano, muted trumpet or sax, soft vinyl haze
+Atmosphere: late-night neon room, red light ambience, private urban tension
+Energy: smoky intro, intimate verses, darker chorus lift, melancholic outro
+Use Case: late-night urban character song, cinematic short video
+```
+
+For strong-aesthetic themes, prioritize specificity over safe generic labels.
+对于强审美主题，优先使用具体风格，而不是安全但泛的标签。
+
+Examples:
+示例：
+
+- use `trip-hop, smoky lounge jazz, late-night downtempo pop` instead of only `Chinese R&B` / 用 `trip-hop, smoky lounge jazz, late-night downtempo pop`，不要只写 `Chinese R&B`
+- use `urban narrative folk, acoustic folk-pop` instead of only `folk` / 用 `urban narrative folk, acoustic folk-pop`，不要只写 `folk`
+- use `anthemic pop rock, stadium rock` instead of only `rock` / 用 `anthemic pop rock, stadium rock`，不要只写 `rock`
+
+When the theme has a strong visual world, include `Atmosphere`.
+当主题具有强视觉世界时，应加入 `Atmosphere`。
+
+When rhythm feel is important, prefer `Groove` over a vague `Tempo` line.
+当律动感很重要时，优先使用 `Groove`，不要只写模糊的 `Tempo`。
+
 ## `create_instrumental_bgm` output blocks / 器乐输出模块
 
 Typical output:

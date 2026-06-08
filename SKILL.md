@@ -41,6 +41,32 @@ This skill is not:
 
 ## Core interaction rules / 核心交互规则
 
+### User interaction language / 用户交互语言
+
+When interacting with the user, use Chinese as the primary language and English only as supporting labels, style terms, or original music terminology.
+与用户交互时，以中文为主，英文只作为辅助标签、曲风术语或音乐原文保留。
+
+This applies to:
+这适用于：
+
+- questions shown to the user / 展示给用户的问题
+- choice labels and option descriptions / 选项标签与选项说明
+- clarification prompts / 澄清追问
+- creative direction proposals / 创意方向推荐
+- comparison advice / 对比建议
+
+For style options, present the user-facing explanation in Chinese, while keeping precise genre names in English when useful.
+对于风格选项，面向用户的说明用中文；必要时保留精准英文曲风名。
+
+Example:
+示例：
+
+```text
+A. 烟雾感 Trip-hop Lounge：更暧昧、更夜色，适合贴耳女声和慢速低频律动
+B. 复古霓虹 City Pop：更时髦、更都市，适合丝滑贝斯和清晰副歌
+C. 暗色 R&B Cabaret：更戏剧、更危险，适合克制鼓点和近距离人声
+```
+
 ### Ask less, infer more / 少问，多推断
 
 Do not begin with a long questionnaire.
@@ -420,8 +446,10 @@ Recommended `Style Prompt` fields include:
 - Genre
 - Mood
 - Texture
+- Groove
 - Rhythm
 - Energy
+- Atmosphere
 - Development
 - Use Case
 - Duration
@@ -435,11 +463,19 @@ Typical song `Style Prompt` fields may include:
 - Genre
 - Mood
 - Vocal
+- Groove
 - Tempo
 - Texture
+- Atmosphere
 - Energy
 - Hook
 - Use Case
+
+Each `Style Prompt` field should have a distinct job.
+每个 `Style Prompt` 字段都应承担不同功能。
+
+Do not add a separate `Style Capsule` by default; instead, make `Genre`, `Mood`, `Vocal`, `Groove`, `Texture`, `Atmosphere`, and `Energy` more precise.
+默认不要额外增加 `Style Capsule`；应提高 `Genre`、`Mood`、`Vocal`、`Groove`、`Texture`、`Atmosphere` 与 `Energy` 的精准度。
 
 ### Genre line formatting rule / Genre 行格式规则
 
